@@ -7,7 +7,8 @@
     android:orientation="vertical"
     tools:context="com.example.eduardopalacios.bdejemplo.Main2Activity">
 
-    <include layout="@layout/toolbar">
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar">
 
     </include>
     <ListView
