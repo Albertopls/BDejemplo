@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
     public void  obtenerValores()
     {
-        String[]columnas={"placa","marca","modelo","anio"};
+        String[]columnas={"codigo,placa","marca","modelo","anio"};
         List<Item>items=new ArrayList<>();
 
         SQLiteDatabase sqLiteDatabaseRedeable=dbHelper.getReadableDatabase();
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
         while (cursor.moveToNext())
         {
-            items.add(new Item(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getInt(3)));
+            items.add(new Item(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getInt(4)));
 
         }
 

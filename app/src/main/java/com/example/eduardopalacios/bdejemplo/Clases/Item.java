@@ -12,10 +12,11 @@ import java.io.Serializable;
 public class Item implements Parcelable{
 
     String placa,marca,modelo;
-    int anio;
+    int codigo,anio;
 
-    public Item(String placa,String marca,String modelo,int anio)
+    public Item(int codigo,String placa,String marca,String modelo,int anio)
     {
+        this.codigo=codigo;
         this.placa=placa;
         this.marca=marca;
         this.modelo=modelo;
@@ -23,6 +24,7 @@ public class Item implements Parcelable{
     }
 
     protected Item(Parcel in) {
+        codigo=in.readInt();
         placa = in.readString();
         marca = in.readString();
         modelo = in.readString();
@@ -41,6 +43,10 @@ public class Item implements Parcelable{
         }
     };
 
+    public  int getCodigo()
+    {
+        return codigo;
+    }
     public String getPlaca() {
         return placa;
     }
@@ -64,6 +70,7 @@ public class Item implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(codigo);
         parcel.writeString(placa);
         parcel.writeString(marca);
         parcel.writeString(modelo);

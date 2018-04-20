@@ -14,6 +14,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/carro2" />
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,44 +31,73 @@
             android:textSize="30sp" />
 
 
-        <TextView
+        <EditText
             android:id="@+id/placa2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:background="@drawable/disenio_edittext"
-            android:text="Placa:"
-            android:textSize="25sp" />
+            android:hint="Placa:"
+            android:padding="10dp"
+            android:textSize="15sp"
+             />
 
-        <TextView
+        <EditText
             android:id="@+id/marca2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:background="@drawable/disenio_edittext"
-            android:text="Marca:"
-            android:textSize="25sp" />
+            android:hint="Marca:"
+            android:padding="10dp"
+            android:textSize="15sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/modelo2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:background="@drawable/disenio_edittext"
-            android:text="Modelo:"
-            android:textSize="25sp" />
+            android:hint="Modelo:"
+            android:padding="10dp"
+            android:textSize="15sp" />
 
-        <TextView
+        <EditText
             android:id="@+id/anio2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:background="@drawable/disenio_edittext"
-            android:text="Año:"
-            android:textSize="25sp" />
+            android:hint="Año:"
+            android:padding="10dp"
+            android:textSize="15sp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/cancelar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cancelar"
+                android:backgroundTint="#d8f55a52"
+                android:textColor="#ffffff"/>
+
+            <Button
+                android:id="@+id/actualizar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Actualizar"
+                android:backgroundTint="#d8f55a52"
+                android:textColor="#ffffff"/>
+
+        </LinearLayout>
 
     </LinearLayout>
+
 
 
 

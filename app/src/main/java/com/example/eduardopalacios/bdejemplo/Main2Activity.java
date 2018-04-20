@@ -1,8 +1,10 @@
 package com.example.eduardopalacios.bdejemplo;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
@@ -104,29 +106,29 @@ public class Main2Activity extends AppCompatActivity {
     public void buscar_Elemento_Operador_Like(String texto)
     {
 
-        String consulta="SELECT placa, marca, modelo, anio FROM vehiculos WHERE marca like '"+texto+"%'";
+        String consulta="SELECT codigo, placa, marca, modelo, anio FROM vehiculos WHERE marca like '"+texto+"%'";
 
         SQLiteDatabase sqLiteDatabaseRedeable=helper.getReadableDatabase();
 
-        List<Item>items2=new ArrayList<>();
+        items=new ArrayList<>();
 
 
         Cursor cursor=sqLiteDatabaseRedeable.rawQuery(consulta,null);
 
         while (cursor.moveToNext())
         {
-            items2.add(new Item(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getInt(3)));
+            items.add(new Item(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getInt(4)));
 
         }
 
-        AgregarValoresAdapter(items2);
+        AgregarValoresAdapter(items);
 
 
     }
 
     public void eliminarRegistro(int position)
     {
-        String id[]={String.valueOf(position)};
+        String id[]={String.valueOf(items.get(position).getCodigo())};
        // String consulta="DELETE FROM vehiculos where codigo='"+position+"'";
 
         SQLiteDatabase sqLiteDatabaseRedeableDelete=helper.getReadableDatabase();
@@ -152,11 +154,47 @@ public class Main2Activity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
 
-                eliminarRegistro(i+1);
-               // Intent intent=new Intent(Main2Activity.this,Main3Activity.class);
-                //startActivity(intent);
+                Dialogo(i);
+
+
 
             }
         });
+    }
+
+    public void Dialogo(final int positionListview)
+    {
+        final String[]opciones={"Editar información","Eliminar registro"};
+
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+
+        builder.setTitle("Selecciona una opción").setItems(opciones, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int position) {
+
+                if (position==0)
+                {
+                     Bundle bundle=new Bundle();
+                     bundle.putInt("codigo",items.get(positionListview).getCodigo());
+                     bundle.putString("placa",items.get(positionListview).getPlaca());
+                     bundle.putString("marca",items.get(positionListview).getMarca());
+                     bundle.putString("modelo",items.get(positionListview).getModelo());
+                     bundle.putInt("anio",items.get(positionListview).getAnio());
+
+
+                     Intent intent=new Intent(Main2Activity.this,Main3Activity.class);
+                     intent.putExtras(bundle);
+
+                     startActivity(intent);
+
+
+                }
+                else {
+                     eliminarRegistro(positionListview);
+                }
+            }
+        });
+        AlertDialog dialog=builder.create();
+        dialog.show();
     }
 }
