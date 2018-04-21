@@ -85,7 +85,7 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
     public void actualizarRegistro2(String placa,String marca,String modelo,int anio)
     {
         int id=bundle.getInt("codigo");
-        String sentencia="UPDATE vehiculos SET placa='"+placa+"' ,marca='"+marca+"',modelo='"+modelo+"',anio='"+anio+"', WHERE codigo="+id+";";
+        String sentencia="UPDATE vehiculos SET placa= '"+placa+"' , marca= '"+marca+"', modelo= '"+modelo+"', anio= '"+anio+"' WHERE codigo="+id+";";
 
         SQLiteDatabase sqLiteDatabase=helper.getWritableDatabase();
 
