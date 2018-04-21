@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
         SQLiteDatabase sqLiteDatabaseRedeable=dbHelper.getReadableDatabase();
 
+        // "marca=?", new String[]{"Nissan"},
         Cursor cursor=sqLiteDatabaseRedeable.query("Vehiculos",columnas,"",null,null,null,"marca DESC");
 
         while (cursor.moveToNext())

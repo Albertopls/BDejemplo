@@ -77,7 +77,7 @@ public class Main3Activity extends AppCompatActivity implements View.OnClickList
         contentValues.put("modelo",modelo);
         contentValues.put("anio",anio);
 
-        sqLiteDatabase.update("vehiculos",contentValues,"codigo="+id,null);
+        sqLiteDatabase.update("vehiculos",contentValues,"codigo=?", new String[] {String.valueOf(id)});
         sqLiteDatabase.close();
 
     }
